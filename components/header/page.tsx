@@ -9,7 +9,7 @@ const Header = () => {
                     <input type="text" placeholder="جستجو در فیلم ها" className="w-full"/>
                 </form>
                 <div className="w-4/12">
-
+                    <a href="">آفزودن ویدئو جدید</a>
                 </div>
             </div>
         </header>
