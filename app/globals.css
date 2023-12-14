@@ -15,6 +15,31 @@
     font-display: swap;
 }
 
+.page-loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(255 255 255 / 90%);
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.page-loading img {
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 body {
     direction: rtl;
     background-color: #fff;
@@ -22,5 +47,22 @@ body {
 }
 
 .logo {
-    height: 30px;
+    height: 26px;
+}
+
+body aside {
+    width: 200px;
+    height: calc(100vh - 109px);
+}
+
+body .wrapper {
+    width: calc(100% - 200px);
+}
+
+body header .profile_list ul[open] {
+    display: block;
+}
+
+aside .menu .current {
+    @apply bg-gray-200
 }
