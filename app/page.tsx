@@ -1,11 +1,9 @@
-import Image from 'next/image'
+import AllVideos from "@/components/video/allvideos";
+
 
 export default function Home() {
   return (
-      <>
-      
-صفحه
+    <AllVideos />
 
-    </>
   )
 }

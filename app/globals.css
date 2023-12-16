@@ -70,7 +70,7 @@ body header .profile_list ul[open] {
 
 body main aside {
     width: 200px;
-    height: calc(100vh - 109px);
+    min-height: calc(100vh - 109px);
     transition: all 0.5s ease 0s;
 }
 
@@ -101,4 +101,12 @@ body main .wrapper {
 
 body main[open] .wrapper {
     width: calc(100% - 70px);
+}
+
+body main .videos h2 {
+    font-size: 13px;
+    padding: 8px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
