@@ -4,13 +4,31 @@ import { useAtom } from 'jotai'
 import {jotaiOpenSidebar} from '@/app/jotai'
 import SearchForm from "../search/searchform"
 import ProfileLinks from "../profile/profile_links"
+import { useEffect } from 'react';
 
 const Header = () => {
 
     const [openSidebar , setOpenSidebar] = useAtom(jotaiOpenSidebar)
-    
+
+    useEffect(() => {
+        const handleWindowResize = () => {
+            if (window.innerWidth < 767) {
+                setOpenSidebar(false)
+            }
+            else {
+                setOpenSidebar(true)
+            }
+        };
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+        window.removeEventListener('resize', handleWindowResize);
+        };
+    });
+
     return (
-        <header className="py-2 fixed w-full shadow-sm bg-white top-0">
+        <header className="py-2 fixed w-full shadow-sm bg-white top-0 z-10">
             <div className="px-4 flex gap-2 justify-between items-center flex-col md:flex-row">
                 <div className="flex gap-5 items-center">
                     <div className="menu-icon w-[28px] cursor-pointer" open={!openSidebar} onClick={() => {setOpenSidebar(!openSidebar)}}>
@@ -19,6 +37,7 @@ const Header = () => {
                         <span></span>
                     </div>
                     <a href="/" title="آپارات">
+                        
                         <img src="/assets/img/logo.png" alt="آپارات" className="logo" />
                     </a>
                 </div>
