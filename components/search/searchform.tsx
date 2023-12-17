@@ -15,7 +15,7 @@ const SearchForm = () => {
     }
 
     return (
-        <form className="w-[450px] p-3 rounded-full flex bg-gray-100">
+        <form className="w-[450px] md:w-[320px] lg:w-[550px] max-w-full p-3 rounded-full flex bg-gray-100">
             <input type="text" placeholder="جستجو در فیلم ها" className="w-full px-3 bg-transparent outline-none text-sm" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
             <button onClick={searchHandler}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
