@@ -8,7 +8,7 @@ const Main = (props) => {
     const [openSidebar , setOpenSidebar] = useAtom(jotaiOpenSidebar)
     
     return (
-        <main className="mt-[154px] md:mt-[65px] flex" open={!openSidebar}>
+        <main className="mt-[147px] md:mt-[65px] flex" open={!openSidebar}>
           <aside className="bg-gray-100 p-4 shadow-sm">
             <Menu />
           </aside>
