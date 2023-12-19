@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-const jotaiOpenSidebar = atom(true)
+const jotaiOpenSidebar = atom<boolean>(true)
 
 export {jotaiOpenSidebar}
 
