@@ -50,6 +50,10 @@ body {
     height: 26px;
 }
 
+header .search-input.focused {
+    @apply bg-blue-50 border border-blue-100
+}
+
 header .menu-icon {
     border-radius: 50%;
     height: 40px;
