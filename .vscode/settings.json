@@ -1,0 +1,8 @@
+{
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorStyleInactive": "line",
+    "terminal.integrated.cursorWidth": 3,
+    "terminal.integrated.enableBell": false,
+    "terminal.integrated.enableImages": true,
+    "terminal.integrated.cursorBlinking": true
+}
