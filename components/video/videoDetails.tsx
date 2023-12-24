@@ -1,14 +1,14 @@
 "use client"
 
 import { useAtom } from 'jotai'
-import {jotaiOpenSidebar} from '@/app/jotai'
+import {SIDEBAR_ATOM} from '@/app/jotai'
 import { useState, useEffect } from "react"
 import axios from "axios"
 import RelativeVideos from "./RelativeVideos"
 
 const VideoDetails = ({videoID}:any) => {
 
-    const [ , setOpenSidebar] = useAtom<boolean>(jotaiOpenSidebar)
+    const [ , setOpenSidebar] = useAtom<boolean>(SIDEBAR_ATOM)
     
     const [video , setVideo] = useState<any>([])
     const [tags , setTags] = useState<any>([])

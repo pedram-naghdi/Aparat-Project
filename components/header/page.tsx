@@ -1,26 +1,26 @@
 "use client"
 
 import { useAtom } from 'jotai'
-import {jotaiOpenSidebar} from '@/app/jotai'
+import { SIDEBAR_ATOM } from '@/app/jotai'
 import SearchForm from "../search/searchform"
-import ProfileLinks from "../profile/profile_links"
+import ProfileLinks from "../profile/profilelinks"
 import { useEffect } from 'react';
 
 const Header = () => {
-
-    const [openSidebar , setOpenSidebar] = useAtom(jotaiOpenSidebar)
+    const [openSidebar, setOpenSidebar] = useAtom(SIDEBAR_ATOM)
 
     useEffect(() => {
 
         // Check window width on page load
         const widthload = window.innerWidth;
-            if (widthload < 767) {
-                setOpenSidebar(false)
-            }
-            else {
-                setOpenSidebar(true)
-            }
-        
+        if (widthload < 767) {
+            setOpenSidebar(false)
+
+        }
+        else {
+            setOpenSidebar(true)
+        }
+
         // Check window width on page resize
         const handleWindowResize = () => {
             if (window.innerWidth < 767) {
@@ -34,15 +34,15 @@ const Header = () => {
         window.addEventListener('resize', handleWindowResize);
 
         return () => {
-        window.removeEventListener('resize', handleWindowResize);
+            window.removeEventListener('resize', handleWindowResize);
         }
-    },[])
+    }, [])
 
     return (
         <header className="py-2 fixed w-full shadow-sm bg-white top-0 z-10">
             <div className="px-4 flex gap-2 justify-between items-center flex-col md:flex-row">
                 <div className="flex gap-3 items-center">
-                    <div className="menu-icon hover:bg-gray-100" open={!openSidebar} onClick={() => {setOpenSidebar(!openSidebar)}}>
+                    <div className="menu-icon hover:bg-gray-100" open={!openSidebar} onClick={() => { setOpenSidebar(!openSidebar) }}>
                         <span></span>
                         <span></span>
                         <span></span>

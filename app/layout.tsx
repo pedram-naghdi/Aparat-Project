@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import '@/public/assets/css/globals.css'
 import Header from '@/components/header/page'
 import Footer from '@/components/footer/page'
 import Main from '@/components/main/page'
+import { PropsWithChildren } from 'react'
 
 export const metadata: Metadata = {
   title: 'آپارات | سامانه اشتراک ویدئو',
@@ -11,9 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: PropsWithChildren) {
   return (
     <html lang="fa">
       <body>
