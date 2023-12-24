@@ -5,6 +5,16 @@ import axios from "axios"
 const AllVideos = () => {
 
     const [videos , setVideos] = useState([])
+
+    interface video  {
+        id: number,
+        uid : string,
+        small_poster: string,
+        title: string,
+        visit_cnt: number,
+        sdate: string
+
+    }
    
     useEffect(() => {
         async function GetAllVideos() {
@@ -36,14 +46,14 @@ const AllVideos = () => {
         </div>
         <div className="videos flex flex-wrap mb-8">
             {
-            videos.map((item) => (
+            videos.map((item:video) => (
             <div className="video w-full md:w-[50%] lg:w-[25%] px-2 pb-5" key={item.id}>
                 <div className="px-2 pt-2 pb-3 rounded-[5px] hover:bg-blue-50">
                     <a href={`/video/${item.uid}`} >
-                        <div className="video-img">
+                        <div className="video-img relative after:block after:w-full after:h-full after:bg-black after:bg-opacity-10 after:absolute after:top-0 after:right-0 after:rounded-[5px]">
                             <img src={item.small_poster} className="w-full rounded-[5px]" />
                         </div>
-                        <h2>{item.title}</h2>
+                        <h2 className="text-sm p-2 mb-2 text-ellipsis whitespace-nowrap overflow-hidden">{item.title}</h2>
                         <div className="more-data flex items-center justify-between text-[10px] text-blue-600">
                             <span className="visit flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
@@ -53,7 +63,7 @@ const AllVideos = () => {
                             <span className="date flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                                </svg>{item.sdate}</span>
+                                </svg>{item.sdate.toString()}</span>
                         </div>
                     </a>
                 </div>

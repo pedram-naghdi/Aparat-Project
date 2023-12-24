@@ -42,13 +42,13 @@ const Header = () => {
         <header className="py-2 fixed w-full shadow-sm bg-white top-0 z-10">
             <div className="px-4 flex gap-2 justify-between items-center flex-col md:flex-row">
                 <div className="flex gap-3 items-center">
-                    <div className="menu-icon hover:bg-gray-100" open={!openSidebar} onClick={() => { setOpenSidebar(!openSidebar) }}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div className={`menu-icon hover:bg-gray-100 rounded-full h-[40px] text-center flex flex-wrap p-[10px] items-center w-[40px] cursor-pointer absolute top-[100px] right-[15px] md:relative md:top-0 md:right-0  ${openSidebar ? '': 'bg-gray-100'}`} onClick={() => { setOpenSidebar(!openSidebar) }}>
+                        <span className='block w-full h-[2px] bg-[#151515] rounded-[5px]'></span>
+                        <span className='block w-full h-[2px] bg-[#151515] rounded-[5px]'></span>
+                        <span className='block w-full h-[2px] bg-[#151515] rounded-[5px]'></span>
                     </div>
                     <a href="/" title="آپارات">
-                        <img src="/assets/img/logo.png" alt="آپارات" className="logo" />
+                        <img src="/assets/img/logo.png" alt="آپارات" className="h-[26px]" />
                     </a>
                 </div>
                 <SearchForm />

@@ -6,14 +6,14 @@ const ProfileLinks = () => {
     const [openProfileMenu , SetopenProfileMenu] = useState(false)
     const [auth , SetAuth] = useState(true)
 
-    // useEffect(() => {
-    //     let auth = {
-    //         isLogin : true,
-    //         token: '123'
-    //     }
+    useEffect(() => {
+        let auth = {
+            isLogin : true,
+            token: '123'
+        }
 
-    //     localStorage.setItem('auth' , JSON.stringify(auth))
-    // })
+        localStorage.setItem('auth' , JSON.stringify(auth))
+    })
 
     
     useEffect(() => {
@@ -43,7 +43,7 @@ const ProfileLinks = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                     </svg>
                 </div>
-                <ul className="absolute p-3 w-[200px] left-0 top-[55px] bg-white shadow-sm border hidden rounded-md text-gray-600" open={openProfileMenu}>
+                <ul className={`absolute p-3 w-[200px] left-0 top-[55px] bg-white shadow-sm border hidden rounded-md text-gray-600 ${openProfileMenu ? '!block' : ''}`}>
                     <li className="mb-3">
                         <a href="/Dashboard" className="flex gap-2 items-center font-bold text-black">
                             <img src="/assets/img/profile/pedram.jpg" className=" rounded-full w-[40px] h-[40px] border border-gray-200 p-[1px]" />پدرام نقدی

@@ -10,7 +10,7 @@ const SearchForm = () => {
     const router = useRouter()
 
     return (
-        <div className={`search-input w-[450px] md:w-[320px] lg:w-[550px] max-w-full p-3 rounded-full flex bg-gray-100 border border-transparent ${searchTextFocus ? "focused" : ""}`}>
+        <div className={`search-input w-[450px] md:w-[320px] lg:w-[550px] max-w-full p-3 rounded-full flex bg-gray-100 border border-transparent transition ease-in duration-100 ${searchTextFocus ? "!bg-blue-50 !border-blue-100" : ""}`}>
             <input type="text" placeholder="جستجو در فیلم ها" className="w-full px-3 bg-transparent outline-none text-sm" value={searchText} onChange={(e) => setSearchText(e.target.value)} onFocus={() => setSearchTextFocus(true)} onBlur={() => setSearchTextFocus(false)} />
             <button onClick={() => router.push(`/search/${searchText}`)}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

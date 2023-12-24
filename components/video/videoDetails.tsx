@@ -10,8 +10,24 @@ const VideoDetails = ({videoID}:any) => {
 
     const [ , setOpenSidebar] = useAtom<boolean>(SIDEBAR_ATOM)
     
-    const [video , setVideo] = useState<any>([])
-    const [tags , setTags] = useState<any>([])
+    const [video , setVideo] = useState<video>([])
+    const [tags , setTags] = useState([])
+
+    interface video {
+        frame : string,
+        title: string,
+        visit_cnt: number,
+        like_cnt: number,
+        size: number,
+        description: string
+        sdate: string,
+        cat_id: number
+    }
+
+    interface tags {
+        name: string,
+        cnt: number
+    }
  
     useEffect(() => {   
 
@@ -79,7 +95,7 @@ const VideoDetails = ({videoID}:any) => {
                         </span>
                         <div className="tags">
                             {
-                            tags.map((tag:any) => (
+                            tags.map((tag:tags) => (
                                 <a href={`tag/${tag.name.replace(/ /g,"_")}`} key={tag.cnt}>
                                     <span className="ml-3 hover:text-blue-600">#{tag.name}</span>
                                 </a>))
@@ -89,7 +105,7 @@ const VideoDetails = ({videoID}:any) => {
                 </div>
             </div>
             <div className="relative-videos w-full lg:w-[300px] pr-3">
-                <RelativeVideos catID={parseInt(video.cat_id)} />
+                <RelativeVideos catID={video.cat_id} />
             </div>
         </div>
     )
