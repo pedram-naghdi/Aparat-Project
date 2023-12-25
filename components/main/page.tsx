@@ -1,7 +1,7 @@
 "use client"
 import { useAtomValue } from 'jotai'
 import {SIDEBAR_ATOM} from '@/app/jotai'
-import Menu from '@/components/sidebar/menu'
+import Menu from '@/components/sidebar/Menu'
 
 const Main = (props) => {
 

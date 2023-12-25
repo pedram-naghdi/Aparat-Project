@@ -2,8 +2,8 @@
 
 import { useAtom } from 'jotai'
 import { SIDEBAR_ATOM } from '@/app/jotai'
-import SearchForm from "../search/searchform"
-import ProfileLinks from "../profile/profilelinks"
+import SearchForm from "../search/SearchForm"
+import Profile from "../profile/Profile"
 import { useEffect } from 'react';
 
 const Header = () => {
@@ -59,7 +59,7 @@ const Header = () => {
                         </svg>
                         <span>افزودن ویدئو جدید</span>
                     </a>
-                    <ProfileLinks />
+                    <Profile />
                 </div>
             </div>
         </header>

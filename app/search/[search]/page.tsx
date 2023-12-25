@@ -1,4 +1,4 @@
-import SearchResultsVideos from "@/components/video/SearchResultsVideos"
+import SearchResultsVideos from "@/app/search/components/SearchResultsVideos"
 
 const SearchResults = ({ params }: { params: { search: string } }) => {
     return (

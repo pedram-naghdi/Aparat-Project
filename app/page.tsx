@@ -1,9 +1,7 @@
-import AllVideos from "@/components/video/allvideos";
-
+import AllVideos from "@/app/video/components/AllVideos";
 
 export default function Home() {
   return (
     <AllVideos />
-
   )
 }

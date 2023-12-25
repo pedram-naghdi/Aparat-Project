@@ -1,4 +1,4 @@
-import VideoDetails from "@/components/video/videoDetails"
+import VideoDetails from "@/app/video/components/VideoDetails"
 
 const Video = ({ params }: { params: { id: string } }) => {
     return (
