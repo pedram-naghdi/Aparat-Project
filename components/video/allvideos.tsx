@@ -4,7 +4,7 @@ import axios from "axios"
 
 const AllVideos = () => {
 
-    const [videos , setVideos] = useState([])
+    const [videos , setVideos] = useState<video[]>([])
 
     interface video  {
         id: number,
