@@ -6,29 +6,31 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import RelativeVideos from "./RelativeVideos"
 
+interface Ivideo {
+    frame : string,
+    title: string,
+    visit_cnt: number,
+    like_cnt: number,
+    size: number,
+    description: string
+    sdate: string,
+    cat_id: number
+}
+
+type Itags = []
+
+interface Itag {
+    name: string,
+    cnt: number
+}
+
 const VideoDetails = ({videoID}:any) => {
 
     const [ , setOpenSidebar] = useAtom<boolean>(SIDEBAR_ATOM)
     
-    const [video , setVideo] = useState<video | undefined>()
-    const [tags , setTags] = useState<tags[]>([])
+    const [video , setVideo] = useState<Ivideo | undefined>()
+    const tags: Itags = video?.tags?.slice(0, 8)
 
-    interface video {
-        frame : string,
-        title: string,
-        visit_cnt: number,
-        like_cnt: number,
-        size: number,
-        description: string
-        sdate: string,
-        cat_id: number
-    }
-
-    interface tags {
-        name: string,
-        cnt: number
-    }
- 
     useEffect(() => {   
 
         setOpenSidebar(false)
@@ -40,8 +42,6 @@ const VideoDetails = ({videoID}:any) => {
 
             }).then((response) => {
                 setVideo(response.data.video)
-                const selectedTags = response.data.video.tags.slice(0, 8);
-                setTags(selectedTags)
             }, (error) => {
                 console.log(error)
             })
@@ -52,7 +52,6 @@ const VideoDetails = ({videoID}:any) => {
       }, [videoID])
 
       console.log(video)
-      console.log(tags)
 
     return ( 
         <div className="flex lg:flex-row flex-col">
@@ -95,7 +94,7 @@ const VideoDetails = ({videoID}:any) => {
                         </span>
                         <div className="tags">
                             {
-                            tags.map((tag:tags) => (
+                            tags?.map((tag:Itag) => (
                                 <a href={`tag/${tag.name.replace(/ /g,"_")}`} key={tag.cnt}>
                                     <span className="ml-3 hover:text-blue-600">#{tag.name}</span>
                                 </a>))

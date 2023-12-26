@@ -2,41 +2,13 @@
 
 import { useAtom } from 'jotai'
 import { SIDEBAR_ATOM } from '@/app/jotai'
-import SearchForm from "../search/SearchForm"
-import Profile from "../profile/Profile"
+import SearchForm from "./SearchForm"
+import Profile from "./Profile"
 import { useEffect } from 'react';
 
 const Header = () => {
+    
     const [openSidebar, setOpenSidebar] = useAtom(SIDEBAR_ATOM)
-
-    useEffect(() => {
-
-        // Check window width on page load
-        const widthload = window.innerWidth;
-        if (widthload < 767) {
-            setOpenSidebar(false)
-
-        }
-        else {
-            setOpenSidebar(true)
-        }
-
-        // Check window width on page resize
-        const handleWindowResize = () => {
-            if (window.innerWidth < 767) {
-                setOpenSidebar(false)
-            }
-            else {
-                setOpenSidebar(true)
-            }
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        }
-    }, [])
 
     return (
         <header className="py-2 fixed w-full shadow-sm bg-white top-0 z-10">
