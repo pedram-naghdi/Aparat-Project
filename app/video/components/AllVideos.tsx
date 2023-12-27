@@ -1,10 +1,9 @@
 "use client"
-import { useState, useEffect } from "react"
-import axios from "axios"
+import VideoLoading from './Loading'
+import VideoError from './Error'
+import useAllVideos from '@/services/useAllVideos'
 
 const AllVideos = () => {
-
-    const [videos , setVideos] = useState<video[]>([])
 
     interface video  {
         id: number,
@@ -13,30 +12,14 @@ const AllVideos = () => {
         title: string,
         visit_cnt: number,
         sdate: string
-
     }
-   
-    useEffect(() => {
-        async function GetAllVideos() {
-            await axios({
-                method: 'post',
-                url: 'https://www.aparat.com/etc/api/videoByUser/username/zoomit/perpage/16'
-    
-            }).then((response) => {
-                setVideos(response.data.videobyuser)
-            }, (error) => {
-                console.log(error)
-            })
-            console.log("1")
-        }
 
-        GetAllVideos()
+    const {data : videos , isLoading, isError} = useAllVideos()
 
-      }, []);
-
-      console.log("2")
-
-    return ( 
+    if (isLoading) return (<VideoLoading />)
+    if (isError) return (<VideoError />)
+ 
+    return (     
         <>
         <div className="page-title flex items-center gap-1 mb-5">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-blue-600 stroke-2">
@@ -46,7 +29,7 @@ const AllVideos = () => {
         </div>
         <div className="videos flex flex-wrap mb-8">
             {
-            videos.map((item:video) => (
+            videos?.map((item:video) => (
             <div className="video w-full md:w-[50%] lg:w-[25%] px-2 pb-5" key={item.id}>
                 <div className="px-2 pt-2 pb-3 rounded-[5px] hover:bg-blue-50">
                     <a href={`/video/${item.uid}`} >
@@ -72,6 +55,8 @@ const AllVideos = () => {
             }
         </div>
         </>
+
+        
     )
 }
 

@@ -7,8 +7,6 @@ const RelativeVideos = ({catID}:any) => {
     const [relativeVideos , setRelativeVideos] = useState([])
 
     useEffect(() => {
-        console.log(`cat/${catID}`)
-        console.log(`https://www.aparat.com/etc/api/categoryVideos/cat/${catID}/perpage/2`)
 
         async function getRelatedVideos() {
 
@@ -24,8 +22,6 @@ const RelativeVideos = ({catID}:any) => {
         }
 
         getRelatedVideos()
-
-        console.log(relativeVideos)
 
       }, [catID]);
 
