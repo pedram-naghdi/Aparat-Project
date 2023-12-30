@@ -1,30 +1,21 @@
 "use client"
-import { useState, useEffect } from "react"
-import axios from "axios"
+import useRelativeVideo from '@/services/useRelativeVideo'
+import RelativeVideoLoading from "../components/RelativeVideoLoading"
+
+interface Ivideo {
+    id : number,
+    uid: string,
+    small_poster: string,
+    visit_cnt: number,
+    title: string
+}
 
 const RelativeVideos = ({catID}:any) => {
 
-    const [relativeVideos , setRelativeVideos] = useState([])
+    const {data : relativeVideos , isLoading, isError} = useRelativeVideo(catID)
 
-    useEffect(() => {
-
-        async function getRelatedVideos() {
-
-            axios({
-                method: 'post',
-                url : `https://www.aparat.com/etc/api/categoryVideos/cat/${catID}/perpage/2`
-
-            }).then((response) => {
-                setRelativeVideos(response.data.categoryvideos)
-            }, (error) => {
-                console.log(error)
-            })
-        }
-
-        getRelatedVideos()
-
-      }, [catID]);
-
+    if (isLoading) return (<RelativeVideoLoading />)
+    if (isError) return ('')
       return ( 
         <>
         <div className="page-title flex items-center gap-1 mb-5">
@@ -35,13 +26,13 @@ const RelativeVideos = ({catID}:any) => {
         </div>
         <div className="videos flex flex-wrap">
             {
-            relativeVideos.map((video) => (
+            relativeVideos?.slice(0, 8)?.map((video : Ivideo) => (
             <div className="video w-full pb-4" key={video.id}>
                 <a href={`/video/${video.uid}`} className="flex gap-2 p-1 rounded-[5px] hover:bg-blue-50" >
                     <div className="video-img w-[100px]">
                         <img src={video.small_poster} className="w-full rounded-[5px]" />
                     </div>
-                    <div className=" w-[calc(100%-100px)]">
+                    <div className="w-[calc(100%-100px)]">
                         <h3 className=" text-gray-500 text-xs overflow-hidden h-[33px]">{video.title}</h3>
                         <div className="flex items-center text-[10px] gap-1 mt-2">
                             {video.visit_cnt}
