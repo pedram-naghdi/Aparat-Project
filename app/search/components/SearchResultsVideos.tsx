@@ -5,21 +5,17 @@ import useSearchResultsVideos from '@/services/SearchResultsVideos'
 
 const SearchResultsVideos = ({searchText}:any) => {
 
-    const {data : videos , isLoading, isError, refetch} = useSearchResultsVideos(searchText)
+    const {data : videos , isLoading, isError, refetch , isRefetching} = useSearchResultsVideos(searchText)
 
-      const ReSearch = () => {
-        refetch
-      }
+    if (isLoading || isRefetching) return (<SearchLoading searchText={searchText} isRefetching={isRefetching} />)
+    if (isError) return (<VideoNotFound searchText={searchText} />)
 
-      if (isLoading) return (<SearchLoading searchText={searchText} />)
-      if (isError) return (<VideoNotFound searchText={searchText} />)
-
-      return ( 
+    return ( 
         <>
         <div className="page-title flex justify-between gap-1 mb-7 pb-2 border-b border-gray-100">
             <h3>نتایج یافت شده برای عبارت «<span className="text-blue-600">{decodeURI(searchText)}</span>»</h3>
-            <span title="جستجو دوباره" className={`cursor-pointer text-blue-600 hover:text-blue-400 ${isLoading ? "spin" : ""}`} onClick={ReSearch}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" dataSlot="icon" className="w-6 h-6">
+            <span title="جستجو دوباره" className="cursor-pointer text-blue-600 hover:text-blue-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" dataSlot="icon" className={`w-6 h-6 ${isRefetching ? "animate-spin" : ""}`} onClick={refetch}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                 </svg>
             </span>

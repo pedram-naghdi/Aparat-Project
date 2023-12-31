@@ -2,9 +2,6 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 
 const useSearchResultsVideos = (searchText : string) => {
-
-        console.log(searchText)
-
     return useQuery({
             queryKey: ['SearchResultsVideos'],
             queryFn: () =>
