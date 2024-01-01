@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@font-face {
+    font-family: 'IRANSans';
+    src: url('/assets/font/Iransans/IRANSans.eot') format('eot'), url('/assets/font/Iransans/IRANSans.ttf') format('truetype'), url('/assets/font/Iransans/IRANSans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    direction: rtl;
+    background-color: #fff;
+    font-family: IRANSans;
+}
+
+.Toastify .Toastify__toast-body {
+    font-family: IRANSans;
+    font-size: 13px;
+}
