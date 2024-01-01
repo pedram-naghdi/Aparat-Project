@@ -1,12 +1,12 @@
 "use client"
 
-import { useAtom } from 'jotai'
+import { useSetAtom } from 'jotai'
 import { SIDEBAR_ATOM } from '@/app/jotai'
 import { useEffect } from 'react';
 
 const useWindowSize = () => {
 
-    const [, setOpenSidebar] = useAtom(SIDEBAR_ATOM)
+    const setOpenSidebar = useSetAtom(SIDEBAR_ATOM)
 
     useEffect(() => {
 

@@ -1,5 +1,5 @@
 "use client"
-import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
 import {SIDEBAR_ATOM} from '@/app/jotai'
 import Menu from './Menu'
 import useWindowSize from '@/components/useWindowSize'
@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 const Main = (props) => {
 
   useWindowSize()
-  const [openSidebar, setOpenSidebar] = useAtom(SIDEBAR_ATOM)
+  const openSidebar = useAtomValue<boolean>(SIDEBAR_ATOM)
 
   const queryClient = new QueryClient({ defaultOptions : {
     queries : { refetchOnWindowFocus : false}

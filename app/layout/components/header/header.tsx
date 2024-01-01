@@ -4,11 +4,10 @@ import { useAtom } from 'jotai'
 import { SIDEBAR_ATOM } from '@/app/jotai'
 import SearchForm from "./SearchForm"
 import Profile from "./Profile"
-import { useEffect } from 'react';
 
 const Header = () => {
     
-    const [openSidebar, setOpenSidebar] = useAtom(SIDEBAR_ATOM)
+    const [openSidebar, setOpenSidebar] = useAtom<boolean>(SIDEBAR_ATOM)
 
     return (
         <header className="py-2 fixed w-full shadow-sm bg-white top-0 z-10">

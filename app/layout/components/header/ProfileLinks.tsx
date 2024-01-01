@@ -4,13 +4,18 @@ import { Iauth } from "./Profile"
 interface IProfileLinksProps {
     logout : Dispatch<SetStateAction<Iauth>>
 }
-const ProfileLinks = ({logout}:IProfileLinksProps) => {
+const ProfileLinks = ({logout : SetAuth}:IProfileLinksProps) => {
 
     const [openProfileMenu , SetopenProfileMenu] = useState<boolean>(false)
 
     const Logout = () => {
         localStorage.removeItem("auth");
-        logout({isLogin:false,token:''});
+        SetAuth(
+            {   
+                isLogin:false,
+                token:''
+            }
+        );
     }
 
     return (

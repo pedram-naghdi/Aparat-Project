@@ -1,6 +1,6 @@
 "use client"
 import { SIDEBAR_ATOM } from "@/app/jotai"
-import { useAtom } from "jotai"
+import { useSetAtom } from "jotai"
 import { useEffect} from "react"
 import VideoDetails from "../components/VideoDetails"
 import RelativeVideos from "../components/RelativeVideos"
@@ -13,11 +13,11 @@ type Itags = []
 
 const Video = ({ params }: { params: { id: string } }) => {
 
-    const [ , setOpenSidebar] = useAtom<boolean>(SIDEBAR_ATOM)
+    const setOpenSidebar = useSetAtom(SIDEBAR_ATOM)
 
     useEffect(() => {   
         setOpenSidebar(false)
-      }, [])
+    }, [])
 
     const {data : video , isLoading, isError} = useVideoDetails(params.id)
     const tags: Itags = video?.tags?.slice(0, 8)
