@@ -10,7 +10,11 @@ interface Ivideo {
     title: string
 }
 
-const RelativeVideos = ({catID}:any) => {
+interface IcatID {
+    catID : number
+}
+
+const RelativeVideos = ({catID}:IcatID) => {
 
     const {data : relativeVideos , isLoading, isError} = useRelativeVideo(catID)
 

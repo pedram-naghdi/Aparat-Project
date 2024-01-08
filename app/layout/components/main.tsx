@@ -4,9 +4,10 @@ import {SIDEBAR_ATOM} from '@/app/jotai'
 import Menu from './Menu'
 import useWindowSize from '@/components/useWindowSize'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { PropsWithChildren } from 'react'
 
 
-const Main = (props) => {
+const Main = (props : PropsWithChildren) => {
 
   useWindowSize()
   const openSidebar = useAtomValue<boolean>(SIDEBAR_ATOM)
