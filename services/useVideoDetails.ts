@@ -5,8 +5,11 @@ const useVideoDetails = (videoID : string) => {
 
     return useQuery({
             queryKey: ['Video'],
-            queryFn: () =>
-              axios.get(`https://www.aparat.com/etc/api/video/videohash/${videoID}`).then((response) =>response.data.video),
+            queryFn: () : Promise< {
+                tags:string[],
+                cat_id: number
+            }> =>
+              axios.get(`https://www.aparat.com/etc/api/video/videohash/${videoID}`).then((response) =>response.data.video) ,
         })
 }
 

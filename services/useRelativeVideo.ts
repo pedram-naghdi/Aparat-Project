@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 
-const useRelativeVideo = (catID : string) => {
+const useRelativeVideo = (catID : number) => {
 
     return useQuery({
             queryKey: ['RelativeVideos'],

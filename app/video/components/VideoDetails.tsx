@@ -1,4 +1,4 @@
-"use client"
+import VideoPlayer from './VideoPlayer'
 import VideoTags from './VideoTags'
 
 interface Ivideo {
@@ -7,9 +7,10 @@ interface Ivideo {
     visit_cnt: number,
     like_cnt: number,
     size: number,
-    description: string
+    description: string,
     sdate: string,
-    cat_id: number
+    cat_id: number,
+    big_poster : string,
 }
 
 type Itags = []
@@ -18,11 +19,16 @@ const VideoDetails = (props:any) => {
 
     const video : Ivideo = props.video
     const tags : Itags = props.tags
+    const slug : string = props.slug
+    
+    let videoPlayer = <iframe src={video?.frame} width="100%" height="430px"></iframe>
+    if (slug == "4lqxh") {
+        videoPlayer = <VideoPlayer poster={video?.big_poster} />
+    }
     
     return ( 
-        
         <div className="video px-4 pb-8">
-            <iframe src={video?.frame} width="100%" height="430px"></iframe>
+            {videoPlayer}
             <div className="flex items-start gap-2 justify-between my-5 flex-col md:flex-row md:items-center md:gap-5">
                 <h2 className="font-bold">{video?.title}</h2>
                 <div className="likes flex items-center justify-between gap-3">
@@ -53,7 +59,7 @@ const VideoDetails = (props:any) => {
             <div className="tags flex mt-5 text-gray-500 text-[11px] flex-col md:flex-row gap-3">
                 <span className="date flex items-start md:items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
                 </svg>
                 {video?.sdate}
                 </span>

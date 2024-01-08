@@ -25,3 +25,34 @@ body {
     font-family: IRANSans;
     font-size: 13px;
 }
+
+.fullscreen-video {
+    @apply fixed top-0 right-0 w-full z-50 h-screen
+}
+
+.fullscreen-video video {
+    @apply max-h-full object-cover
+}
+
+.range {
+    direction: ltr;
+    @apply cursor-pointer w-full appearance-none border-transparent outline-none
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @apply appearance-none w-[8px] h-[8px] cursor-pointer rounded-full bg-[#df0f50]
+}
+
+.range::-moz-range-thumb {
+    @apply appearance-none w-[8px] h-[8px] cursor-pointer rounded-full bg-[#df0f50]
+}
+
+.timelapse::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @apply appearance-none w-[0px] h-[0px]
+}
+
+.timelapse::-moz-range-thumb {
+    @apply appearance-none w-[0px] h-[0px]
+}

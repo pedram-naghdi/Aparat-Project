@@ -1,15 +1,13 @@
 "use client"
 import { SIDEBAR_ATOM } from "@/app/jotai"
 import { useSetAtom } from "jotai"
-import { useEffect} from "react"
+import { useEffect, useState} from "react"
 import VideoDetails from "../components/VideoDetails"
 import RelativeVideos from "../components/RelativeVideos"
-import DetailsVideoLoading from '../components/DetailsVideoLoading'
+import DetailsVideoLoading from '../components/VideoDetailsLoading'
 import RelativeVideoLoading from "../components/RelativeVideoLoading"
 import VideoError from '../components/Error'
 import useVideoDetails from '@/services/useVideoDetails'
-
-type Itags = []
 
 const Video = ({ params }: { params: { id: string } }) => {
 
@@ -20,7 +18,7 @@ const Video = ({ params }: { params: { id: string } }) => {
     }, [])
 
     const {data : video , isLoading, isError} = useVideoDetails(params.id)
-    const tags: Itags = video?.tags?.slice(0, 8)
+    const tags = video?.tags?.slice(0, 8)
 
     return (
         <div className="flex lg:flex-row flex-col">
@@ -28,14 +26,15 @@ const Video = ({ params }: { params: { id: string } }) => {
                 {
                     isLoading ? <DetailsVideoLoading /> :
                     isError ? <VideoError /> :
-                    <VideoDetails video={video} tags={tags} />
+                    <VideoDetails video={video} tags={tags} slug={params.id} />
                 }
             </div>
             <div className="relative-videos w-full lg:w-[300px] pr-3">
                 {
                     isLoading ? <RelativeVideoLoading /> :
                     isError ? '' :
-                    <RelativeVideos catID={video?.cat_id} />
+                    video?.cat_id &&
+                    <RelativeVideos catID={video.cat_id} />
                 }
             </div>
         </div>
