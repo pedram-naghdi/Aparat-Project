@@ -18,7 +18,6 @@ const Video = ({ params }: { params: { id: string } }) => {
     }, [])
 
     const {data : video , isLoading, isError} = useVideoDetails(params.id)
-    const tags = video?.tags?.slice(0, 8)
 
     return (
         <div className="flex lg:flex-row flex-col">
@@ -26,7 +25,7 @@ const Video = ({ params }: { params: { id: string } }) => {
                 {
                     isLoading ? <DetailsVideoLoading /> :
                     isError ? <VideoError /> :
-                    <VideoDetails video={video} tags={tags} slug={params.id} />
+                    <VideoDetails video={video} />
                 }
             </div>
             <div className="relative-videos w-full lg:w-[300px] pr-3">

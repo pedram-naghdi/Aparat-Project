@@ -11,24 +11,18 @@ interface Ivideo {
     sdate: string,
     cat_id: number,
     big_poster : string,
+    tags : string[],
+    file_link: string
 }
-
-type Itags = []
 
 const VideoDetails = (props:any) => {
 
     const video : Ivideo = props.video
-    const tags : Itags = props.tags
-    const slug : string = props.slug
-    
-    let videoPlayer = <iframe src={video?.frame} width="100%" height="430px"></iframe>
-    if (slug == "4lqxh") {
-        videoPlayer = <VideoPlayer poster={video?.big_poster} />
-    }
-    
+    const tags = video?.tags?.slice(0, 8)
+
     return ( 
         <div className="video px-4 pb-8">
-            {videoPlayer}
+            <VideoPlayer poster={video?.big_poster} url={video?.file_link} />
             <div className="flex items-start gap-2 justify-between my-5 flex-col md:flex-row md:items-center md:gap-5">
                 <h2 className="font-bold">{video?.title}</h2>
                 <div className="likes flex items-center justify-between gap-3">
