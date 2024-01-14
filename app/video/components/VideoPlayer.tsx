@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react"
 
 interface Iurl {
-    poster: string
+    poster: string,
+    url : string
 }
-const VideoPlayer = ({ poster }: Iurl) => {
+const VideoPlayer = ({ poster , url }: Iurl) => {
 
     const [firstPlay, setFirstPlay] = useState<Boolean>(false)
     const [play, setPlay] = useState<Boolean>(false)
@@ -132,7 +133,7 @@ const VideoPlayer = ({ poster }: Iurl) => {
         <>
             <div className={`videoplayer relative ${fullScreen ? 'fullscreen-video' : ''}`} onMouseMove={() => setShowControls(true)}>
                 <video width="100%" height="430" ref={videoPlayer} poster={poster} onClick={playVideo}>
-                    <source src="/assets/img/video.mp4" type="video/mp4" />
+                    <source src={url} type="video/mp4" />
                 </video>
                 {
                 !firstPlay ?

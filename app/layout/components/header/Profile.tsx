@@ -22,7 +22,7 @@ const Profile = () => {
     })
 
     useEffect(() => {
-        let localStorage_auth
+        let localStorage_auth : any
         localStorage_auth = localStorage.getItem("auth");
         localStorage_auth = JSON.parse(localStorage_auth);
 

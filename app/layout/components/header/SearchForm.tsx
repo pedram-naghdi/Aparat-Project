@@ -27,7 +27,6 @@ const SearchForm = () => {
     }
 
     return (
-        
         <form onSubmit={handleSubmit} className={`search-input w-[450px] md:w-[320px] lg:w-[550px] max-w-full p-3 rounded-full flex bg-gray-100 border border-transparent transition ease-in duration-100 ${searchTextFocus ? "!bg-blue-50 !border-blue-100" : ""}`}>
             <input type="text" placeholder="جستجو در فیلم ها" className="w-full px-3 bg-transparent outline-none text-sm" value={searchText} onChange={(e) => setSearchText(e.target.value)} onFocus={() => setSearchTextFocus(true)} onBlur={() => setSearchTextFocus(false)} />
             <button type="submit" disabled={!searchAllow} >
