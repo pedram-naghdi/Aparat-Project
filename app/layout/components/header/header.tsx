@@ -1,9 +1,9 @@
 "use client"
-
 import { useAtom } from 'jotai'
 import { SIDEBAR_ATOM } from '@/app/jotai'
 import SearchForm from "./SearchForm"
 import Profile from "./Profile"
+import Link from 'next/link'
 
 const Header = () => {
     
@@ -18,18 +18,18 @@ const Header = () => {
                         <span className='block w-full h-[2px] bg-[#151515] rounded-[5px]'></span>
                         <span className='block w-full h-[2px] bg-[#151515] rounded-[5px]'></span>
                     </div>
-                    <a href="/" title="آپارات">
+                    <Link href="/" title="آپارات">
                         <img src="/assets/img/logo.png" alt="آپارات" className="h-[26px]" />
-                    </a>
+                    </Link>
                 </div>
                 <SearchForm />
                 <div className="flex gap-2 items-center mr-auto md:mr-0">
-                    <a href="/add" title="افزودن ویدئو جدید" className="flex items-center py-2 px-3 rounded-full gap-1 border-2 border-blue-600 text-xs hover:bg-blue-600 hover:text-white">
+                    <Link href="/add" title="افزودن ویدئو جدید" className="flex items-center py-2 px-3 rounded-full gap-1 border-2 border-blue-600 text-xs hover:bg-blue-600 hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                         <span>افزودن ویدئو جدید</span>
-                    </a>
+                    </Link>
                     <Profile />
                 </div>
             </div>

@@ -1,7 +1,7 @@
 "use client"
 import SearchLoading from "./SearchLoading"
 import VideoNotFound from './NotFound'
-import useSearchResultsVideos from '@/services/SearchResultsVideos'
+import useSearchResults from '@/services/useSearchResults'
 
 interface Ivideos {
     id : number,
@@ -19,7 +19,7 @@ interface Iprops  {
 
 const SearchResultsVideos = ({searchText}:Iprops) => {
 
-    const {data : videos , isLoading, isError, refetch , isRefetching} = useSearchResultsVideos(searchText)
+    const {data : videos , isLoading, isError, refetch , isRefetching} = useSearchResults(searchText)
 
     if (isLoading || isRefetching) return (<SearchLoading searchText={searchText} isRefetching={isRefetching} />)
     if (isError) return (<VideoNotFound searchText={searchText} />)
