@@ -48,7 +48,7 @@ const VideoDetails = (props:any) => {
                 </div>
             </div>
             <div className="description text-gray-600 text-sm leading-8 text-justify">
-                <p>{video?.description}</p>
+                <p>{video?.description.replace(/&zwnj;/g, ' ')}</p>
             </div>
             <div className="tags flex mt-5 text-gray-500 text-[11px] flex-col md:flex-row gap-3">
                 <span className="date flex items-start md:items-center gap-1">
