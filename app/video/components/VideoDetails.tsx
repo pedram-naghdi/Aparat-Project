@@ -40,7 +40,16 @@ const VideoDetails = (props:any) => {
                         </svg>
                     </span>
                     <span className="flex items-center justify-between text-[12px] gap-1">
-                        K<span>{video?.size ? Math.round(video?.size / 1024):''}</span>
+                        <span style={{direction : "ltr"}}>
+                        {
+                            video?.size >= 1073741824 ? (video?.size / 1073741824).toFixed(2) + " GB"
+                            : video?.size >= 1048576 ? (video?.size / 1048576).toFixed(2) + " MB"
+                            : (video?.size >= 1024) ? (video?.size / 1024).toFixed(2) + " KB"
+                            : (video?.size > 1) ? video?.size + " bytes"
+                            : (video?.size == 1) ? video?.size + " byte"
+                            : "0 bytes"
+                        }
+                        </span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-blue-600">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
                         </svg>
@@ -60,7 +69,6 @@ const VideoDetails = (props:any) => {
                 <VideoTags tags = {tags}/>
             </div>
         </div>
-            
     )
 }
 

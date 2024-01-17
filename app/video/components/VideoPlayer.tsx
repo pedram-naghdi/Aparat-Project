@@ -205,7 +205,19 @@ const VideoPlayer = ({ poster , url }: Iurl) => {
                                 </div>
                                 
                                 <div className="text-white text-[10px] ml-3">
-                                    { Math.round(duration)} / {Math.round(time)}
+                                {
+                                    duration >= 3600 ? 
+                                    new Date(time * 1000).toISOString().substring(11, 19)
+                                    :
+                                    new Date(time * 1000).toISOString().substring(14, 19)
+                                }
+                                <span className="px-1">/</span>
+                                {
+                                    duration >= 3600 ? 
+                                    new Date(duration * 1000).toISOString().substring(11, 19)
+                                    :
+                                    new Date(duration * 1000).toISOString().substring(14, 19)
+                                } 
                                 </div>
 
                             </div>
